@@ -1,0 +1,58 @@
+@model IEnumerable<Job_management_system.Models.Maintenance>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    This screen allows performing maintenace tasks in the job management system. Choose a maintenance task.
+</p>
+
+
+<p>
+    Change the employees that exist in the system.
+</p>
+<p>
+    <a class="btn btn-primary" asp-area="" asp-controller="Employees" asp-action="Index">Employees</a>
+</p>
+
+<p>
+    Change the offices that exist in the system.
+</p>
+<p>
+    <a class="btn btn-primary" asp-area="" asp-controller="Offices" asp-action="Index">Offices</a>
+</p>
+
+<p>
+    Manage the known municipal addresses that have been added to the system.
+    Every job or office has a municipal address associated with it.
+    Multiple jobs can have the same municipal address if the jobs happened at the same place.
+    A municipal address can only be removed if it's no longer associatd with any jobs or offices.
+</p>
+<p>
+    <a class="btn btn-primary" asp-area="" asp-controller="MunicipalAddresses" asp-action="Index">Known municipal addresses</a>
+</p>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
